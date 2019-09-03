@@ -1,0 +1,632 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DB525C57231EC4BC004265FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB525C56231EC4BC004265FE /* AppDelegate.swift */; };
+		DB525C59231EC4BC004265FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB525C58231EC4BC004265FE /* ViewController.swift */; };
+		DB525C5C231EC4BC004265FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB525C5A231EC4BC004265FE /* Main.storyboard */; };
+		DB525C5E231EC4BE004265FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB525C5D231EC4BE004265FE /* Assets.xcassets */; };
+		DB525C61231EC4BE004265FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB525C5F231EC4BE004265FE /* LaunchScreen.storyboard */; };
+		DB525C66231EC4BE004265FE /* Upwork Monitor WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DB525C65231EC4BE004265FE /* Upwork Monitor WatchKit App.app */; };
+		DB525C6C231EC4BE004265FE /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB525C6A231EC4BE004265FE /* Interface.storyboard */; };
+		DB525C6E231EC4BF004265FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB525C6D231EC4BF004265FE /* Assets.xcassets */; };
+		DB525C75231EC4BF004265FE /* Upwork Monitor WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DB525C74231EC4BF004265FE /* Upwork Monitor WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DB525C7A231EC4BF004265FE /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB525C79231EC4BF004265FE /* InterfaceController.swift */; };
+		DB525C7C231EC4BF004265FE /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB525C7B231EC4BF004265FE /* ExtensionDelegate.swift */; };
+		DB525C7E231EC4BF004265FE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB525C7D231EC4BF004265FE /* NotificationController.swift */; };
+		DB525C80231EC4BF004265FE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB525C7F231EC4BF004265FE /* ComplicationController.swift */; };
+		DB525C82231EC4BF004265FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB525C81231EC4BF004265FE /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB525C67231EC4BE004265FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB525C4B231EC4BC004265FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB525C64231EC4BE004265FE;
+			remoteInfo = "Upwork Monitor WatchKit App";
+		};
+		DB525C76231EC4BF004265FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB525C4B231EC4BC004265FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB525C73231EC4BF004265FE;
+			remoteInfo = "Upwork Monitor WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DB525C8A231EC4BF004265FE /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DB525C75231EC4BF004265FE /* Upwork Monitor WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB525C8E231EC4BF004265FE /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				DB525C66231EC4BE004265FE /* Upwork Monitor WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DB525C53231EC4BC004265FE /* Upwork Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Upwork Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB525C56231EC4BC004265FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DB525C58231EC4BC004265FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DB525C5B231EC4BC004265FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DB525C5D231EC4BE004265FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DB525C60231EC4BE004265FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DB525C62231EC4BE004265FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB525C65231EC4BE004265FE /* Upwork Monitor WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Upwork Monitor WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB525C6B231EC4BE004265FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		DB525C6D231EC4BF004265FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DB525C6F231EC4BF004265FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB525C74231EC4BF004265FE /* Upwork Monitor WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Upwork Monitor WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB525C79231EC4BF004265FE /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		DB525C7B231EC4BF004265FE /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		DB525C7D231EC4BF004265FE /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		DB525C7F231EC4BF004265FE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		DB525C81231EC4BF004265FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DB525C83231EC4BF004265FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DB525C84231EC4BF004265FE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DB525C50231EC4BC004265FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB525C71231EC4BF004265FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DB525C4A231EC4BC004265FE = {
+			isa = PBXGroup;
+			children = (
+				DB525C55231EC4BC004265FE /* Upwork Monitor */,
+				DB525C69231EC4BE004265FE /* Upwork Monitor WatchKit App */,
+				DB525C78231EC4BF004265FE /* Upwork Monitor WatchKit Extension */,
+				DB525C54231EC4BC004265FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DB525C54231EC4BC004265FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB525C53231EC4BC004265FE /* Upwork Monitor.app */,
+				DB525C65231EC4BE004265FE /* Upwork Monitor WatchKit App.app */,
+				DB525C74231EC4BF004265FE /* Upwork Monitor WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB525C55231EC4BC004265FE /* Upwork Monitor */ = {
+			isa = PBXGroup;
+			children = (
+				DB525C56231EC4BC004265FE /* AppDelegate.swift */,
+				DB525C58231EC4BC004265FE /* ViewController.swift */,
+				DB525C5A231EC4BC004265FE /* Main.storyboard */,
+				DB525C5D231EC4BE004265FE /* Assets.xcassets */,
+				DB525C5F231EC4BE004265FE /* LaunchScreen.storyboard */,
+				DB525C62231EC4BE004265FE /* Info.plist */,
+			);
+			path = "Upwork Monitor";
+			sourceTree = "<group>";
+		};
+		DB525C69231EC4BE004265FE /* Upwork Monitor WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				DB525C6A231EC4BE004265FE /* Interface.storyboard */,
+				DB525C6D231EC4BF004265FE /* Assets.xcassets */,
+				DB525C6F231EC4BF004265FE /* Info.plist */,
+			);
+			path = "Upwork Monitor WatchKit App";
+			sourceTree = "<group>";
+		};
+		DB525C78231EC4BF004265FE /* Upwork Monitor WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DB525C79231EC4BF004265FE /* InterfaceController.swift */,
+				DB525C7B231EC4BF004265FE /* ExtensionDelegate.swift */,
+				DB525C7D231EC4BF004265FE /* NotificationController.swift */,
+				DB525C7F231EC4BF004265FE /* ComplicationController.swift */,
+				DB525C81231EC4BF004265FE /* Assets.xcassets */,
+				DB525C83231EC4BF004265FE /* Info.plist */,
+				DB525C84231EC4BF004265FE /* PushNotificationPayload.apns */,
+			);
+			path = "Upwork Monitor WatchKit Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DB525C52231EC4BC004265FE /* Upwork Monitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB525C8F231EC4BF004265FE /* Build configuration list for PBXNativeTarget "Upwork Monitor" */;
+			buildPhases = (
+				DB525C4F231EC4BC004265FE /* Sources */,
+				DB525C50231EC4BC004265FE /* Frameworks */,
+				DB525C51231EC4BC004265FE /* Resources */,
+				DB525C8E231EC4BF004265FE /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB525C68231EC4BE004265FE /* PBXTargetDependency */,
+			);
+			name = "Upwork Monitor";
+			productName = "Upwork Monitor";
+			productReference = DB525C53231EC4BC004265FE /* Upwork Monitor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DB525C64231EC4BE004265FE /* Upwork Monitor WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB525C8B231EC4BF004265FE /* Build configuration list for PBXNativeTarget "Upwork Monitor WatchKit App" */;
+			buildPhases = (
+				DB525C63231EC4BE004265FE /* Resources */,
+				DB525C8A231EC4BF004265FE /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB525C77231EC4BF004265FE /* PBXTargetDependency */,
+			);
+			name = "Upwork Monitor WatchKit App";
+			productName = "Upwork Monitor WatchKit App";
+			productReference = DB525C65231EC4BE004265FE /* Upwork Monitor WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		DB525C73231EC4BF004265FE /* Upwork Monitor WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB525C87231EC4BF004265FE /* Build configuration list for PBXNativeTarget "Upwork Monitor WatchKit Extension" */;
+			buildPhases = (
+				DB525C70231EC4BF004265FE /* Sources */,
+				DB525C71231EC4BF004265FE /* Frameworks */,
+				DB525C72231EC4BF004265FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Upwork Monitor WatchKit Extension";
+			productName = "Upwork Monitor WatchKit Extension";
+			productReference = DB525C74231EC4BF004265FE /* Upwork Monitor WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DB525C4B231EC4BC004265FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = Banarum;
+				TargetAttributes = {
+					DB525C52231EC4BC004265FE = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					DB525C64231EC4BE004265FE = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					DB525C73231EC4BF004265FE = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = DB525C4E231EC4BC004265FE /* Build configuration list for PBXProject "Upwork Monitor" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DB525C4A231EC4BC004265FE;
+			productRefGroup = DB525C54231EC4BC004265FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DB525C52231EC4BC004265FE /* Upwork Monitor */,
+				DB525C64231EC4BE004265FE /* Upwork Monitor WatchKit App */,
+				DB525C73231EC4BF004265FE /* Upwork Monitor WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DB525C51231EC4BC004265FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB525C61231EC4BE004265FE /* LaunchScreen.storyboard in Resources */,
+				DB525C5E231EC4BE004265FE /* Assets.xcassets in Resources */,
+				DB525C5C231EC4BC004265FE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB525C63231EC4BE004265FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB525C6E231EC4BF004265FE /* Assets.xcassets in Resources */,
+				DB525C6C231EC4BE004265FE /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB525C72231EC4BF004265FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB525C82231EC4BF004265FE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DB525C4F231EC4BC004265FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB525C59231EC4BC004265FE /* ViewController.swift in Sources */,
+				DB525C57231EC4BC004265FE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB525C70231EC4BF004265FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB525C7E231EC4BF004265FE /* NotificationController.swift in Sources */,
+				DB525C80231EC4BF004265FE /* ComplicationController.swift in Sources */,
+				DB525C7C231EC4BF004265FE /* ExtensionDelegate.swift in Sources */,
+				DB525C7A231EC4BF004265FE /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB525C68231EC4BE004265FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB525C64231EC4BE004265FE /* Upwork Monitor WatchKit App */;
+			targetProxy = DB525C67231EC4BE004265FE /* PBXContainerItemProxy */;
+		};
+		DB525C77231EC4BF004265FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB525C73231EC4BF004265FE /* Upwork Monitor WatchKit Extension */;
+			targetProxy = DB525C76231EC4BF004265FE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DB525C5A231EC4BC004265FE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB525C5B231EC4BC004265FE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DB525C5F231EC4BE004265FE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB525C60231EC4BE004265FE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DB525C6A231EC4BE004265FE /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB525C6B231EC4BE004265FE /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DB525C85231EC4BF004265FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DB525C86231EC4BF004265FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DB525C88231EC4BF004265FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S94WAU9AT4;
+				INFOPLIST_FILE = "Upwork Monitor WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.banarum.Upwork-Monitor.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
+			};
+			name = Debug;
+		};
+		DB525C89231EC4BF004265FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S94WAU9AT4;
+				INFOPLIST_FILE = "Upwork Monitor WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.banarum.Upwork-Monitor.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
+			};
+			name = Release;
+		};
+		DB525C8C231EC4BF004265FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S94WAU9AT4;
+				IBSC_MODULE = Upwork_Monitor_WatchKit_Extension;
+				INFOPLIST_FILE = "Upwork Monitor WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.banarum.Upwork-Monitor.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
+			};
+			name = Debug;
+		};
+		DB525C8D231EC4BF004265FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S94WAU9AT4;
+				IBSC_MODULE = Upwork_Monitor_WatchKit_Extension;
+				INFOPLIST_FILE = "Upwork Monitor WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.banarum.Upwork-Monitor.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.3;
+			};
+			name = Release;
+		};
+		DB525C90231EC4BF004265FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S94WAU9AT4;
+				INFOPLIST_FILE = "Upwork Monitor/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.banarum.Upwork-Monitor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DB525C91231EC4BF004265FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S94WAU9AT4;
+				INFOPLIST_FILE = "Upwork Monitor/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.banarum.Upwork-Monitor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DB525C4E231EC4BC004265FE /* Build configuration list for PBXProject "Upwork Monitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB525C85231EC4BF004265FE /* Debug */,
+				DB525C86231EC4BF004265FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB525C87231EC4BF004265FE /* Build configuration list for PBXNativeTarget "Upwork Monitor WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB525C88231EC4BF004265FE /* Debug */,
+				DB525C89231EC4BF004265FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB525C8B231EC4BF004265FE /* Build configuration list for PBXNativeTarget "Upwork Monitor WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB525C8C231EC4BF004265FE /* Debug */,
+				DB525C8D231EC4BF004265FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB525C8F231EC4BF004265FE /* Build configuration list for PBXNativeTarget "Upwork Monitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB525C90231EC4BF004265FE /* Debug */,
+				DB525C91231EC4BF004265FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DB525C4B231EC4BC004265FE /* Project object */;
+}
