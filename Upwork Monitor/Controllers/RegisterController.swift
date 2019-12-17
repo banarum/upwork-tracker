@@ -18,9 +18,10 @@ class RegisterController: UIViewController, WKUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // generate unique request id
         requestId = self.generateRequestId()
         
-        let regURL = URL(string:"https://upworkapp.zorko.dev/reg?id=\(requestId)")
+        let regURL = URL(string:"\(APIService.DOMAIN_URL + APIService.REG_ENDPOINT)?id=\(requestId)")
         let request = URLRequest(url: regURL!)
         
         // Remove all cache
@@ -33,8 +34,8 @@ class RegisterController: UIViewController, WKUIDelegate {
             }
         }
         
+        // Load webview with observer attached
         webView.load(request)
-        
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
     }
     
@@ -43,30 +44,51 @@ class RegisterController: UIViewController, WKUIDelegate {
     }
     
     func onOauthReceived(verifier:String) {
-        APIService.getTokens(id: requestId, verifier: verifier, callback: { (response:Response<Auth>) in
-            if response.status == "ok" {
-                let defaults = UserDefaults.standard
-                defaults.set(response.result!.oauth_access_token, forKey: "oauth_access_token")
-                defaults.set(response.result!.oauth_access_token_secret, forKey: "oauth_access_token_secret")
+        APIService.shared.getTokens(id: requestId, verifier: verifier, callback: { (response:Response<Auth>) in
+            if response.status == APIService.API_OK {
+                
+                let accessToken = response.result!.oauth_access_token
+                let accessTokenSecret = response.result!.oauth_access_token_secret
+                
+                // Save tokens to local storage for farther use
+                DBHelper.shared.saveString(accessToken, forKey: DBHelper.UPWORK_ACCESS_TOKEN)
+                DBHelper.shared.saveString(accessTokenSecret, forKey: DBHelper.UPWORK_ACCESS_SECRET)
+                
+                // Setup network Service
+                APIService.shared.setTokens(accessToken: accessToken, accessTokenSecret: accessTokenSecret)
+                
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let dashboardController = storyBoard.instantiateViewController(withIdentifier: "dashboard") as! DashboardController
                 self.navigationController?.setViewControllers([dashboardController], animated: false)
-            }else{
+                
+            }
+            else {
                 print(response.message!)
             }
         })
     }
     
+    // When loading completed, check if 'verifier' String present. If so, proceed to getting client oauth tokens
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress" {
-            if (Float(webView.estimatedProgress) == 1) {
+            if Float(webView.estimatedProgress) == 1 {
                 self.getWebViewContent(of: webView, to: {content in
+                    
+                    // Get String after 'oauth_verifier='
                     if let range = content.range(of: "oauth_verifier=") {
                         let substring = content[range.upperBound..<content.endIndex]
+                        
+                        // Get String before ' '
                         if let space_index = substring.firstIndex(of: " ") {
+                            
+                            // '...oauth_verifier=<target> '
+                            
                             let oauth_verifier = String(substring[..<space_index])
+                            
+                            // Proceed with getting client oauth tokens
                             self.onOauthReceived(verifier: oauth_verifier)
-                        }else{
+                        }
+                        else {
                             print("String not present")
                         }
                     }
@@ -78,12 +100,14 @@ class RegisterController: UIViewController, WKUIDelegate {
         }
     }
     
+    // Perform JS query to receive WebView content
     func getWebViewContent(of webView:WKWebView, to receiver: @escaping (String)->Void) {
         webView.evaluateJavaScript("document.documentElement.outerHTML.toString()",
            completionHandler: { (html: Any?, error: Error?) in
                 if (html != nil){
                     receiver(String(describing: html))
-                }else{
+                }
+                else {
                     receiver("")
                 }
             }

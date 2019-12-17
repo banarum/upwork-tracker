@@ -17,23 +17,16 @@ class JobsViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.tableView.register(JobTableViewCell.self, forCellReuseIdentifier: "JobTableViewCell")
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        
-        
         loadSampleJobs()
         
-        print("DONE")
-
-        // Do any additional setup after loading the view.
+        // TODO: Load Jobs list from server
     }
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return jobs.count
     }
 
@@ -105,16 +98,5 @@ class JobsViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.jobs += [job1, job2, job3]
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

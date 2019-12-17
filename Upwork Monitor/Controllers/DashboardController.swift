@@ -44,22 +44,24 @@ class DashboardController: UIViewController {
         self.weekIncome = Income(charge: 0, time: 0)
         self.monthIncome = Income(charge: 0, time: 0)
 
+        // Make rounded profile picture
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.masksToBounds = false
         profileImageView.layer.borderColor = UIColor.black.cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func onSignOut(_ sender: UIBarButtonItem) {
+        
         let alertController = UIAlertController(title: "Sing Out", message:
             "Are you sure?", preferredStyle: .alert)
+        
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action -> Void in
-            let defaults = UserDefaults.standard
-            defaults.removeObject(forKey: "oauth_access_token")
-            defaults.removeObject(forKey: "oauth_access_token_secret")
+            
+            // Delete tokens from local storage
+            DBHelper.shared.deleteString(forKey: DBHelper.UPWORK_ACCESS_TOKEN)
+            DBHelper.shared.deleteString(forKey: DBHelper.UPWORK_ACCESS_SECRET)
             
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let menuController = storyBoard.instantiateViewController(withIdentifier: "menu") as! MenuController
@@ -67,26 +69,29 @@ class DashboardController: UIViewController {
             self.navigationController?.setViewControllers([menuController], animated: false)
             
         }))
+        
         alertController.addAction(UIAlertAction(title: "No", style: .default))
         
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func getUserInfo(access_token:String, access_token_secret:String){
-        APIService.getUser(access_token: access_token, access_token_secret: access_token_secret, callback: {userResponse -> Void in
-            if userResponse.status == "ok" {
+    func getUserInfo() {
+        APIService.shared.getUser(callback: {userResponse -> Void in
+            if userResponse.status == APIService.API_OK {
                 self.setProfilePic(url: userResponse.result!.portrait_100_img)
                 self.nameLabel.text = "\(userResponse.result!.first_name) \(userResponse.result!.last_name)"
                 self.emailLabel.text = userResponse.result!.email
-                self.getIncome(access_token:access_token, access_token_secret:access_token_secret, user: userResponse.result!)
+                self.getIncome(user: userResponse.result!)
                 
-            }else{
+            }
+            else {
                 print(userResponse.message!)
             }
         })
     }
     
-    func setProfilePic(url:String){
+    // Download and setup profile image
+    func setProfilePic(url:String) {
         let imageURL = URL(string: url)!
         URLSession.shared.dataTask(with: imageURL) { (data, _, _) in
             if let data = data {
@@ -98,54 +103,64 @@ class DashboardController: UIViewController {
         }.resume()
     }
     
-    func getIncome(access_token:String, access_token_secret:String, user:User){
-        
-        print(Date().startOfWeek())
+    // Request summarized income data for day/week/month
+    func getIncome(user:User) {
         
         self.todayIncome = Income(charge: 0, time: 0)
         self.weekIncome = Income(charge: 0, time: 0)
         self.monthIncome = Income(charge: 0, time: 0)
+        
+        // Request Today income data
        
         let today_start_timestamp = String(Int(Date().timeIntervalSince1970))
         let today_end_timestamp = String(Int(Date().timeIntervalSince1970))
         
-        APIService.getIncome(access_token: access_token, access_token_secret: access_token_secret, from: today_start_timestamp, till: today_end_timestamp, provider_id: user.profile_key) { (response) in
-            if response.status == "ok" {
+        APIService.shared.getIncome(from: today_start_timestamp, till: today_end_timestamp, provider_id: user.profile_key) { (response) in
+            if response.status == APIService.API_OK {
                 self.todayIncome = response.result!
-            }else{
+            }
+            else {
                 print(response.message!)
             }
         }
+        
+        // Request Week income data
         
         let week_start_timestamp = String(Int(Date().startOfWeek().timeIntervalSince1970))
         let week_end_timestamp = String(Int(Date().endOfWeek().timeIntervalSince1970))
         
-        APIService.getIncome(access_token: access_token, access_token_secret: access_token_secret, from: week_start_timestamp, till: week_end_timestamp, provider_id: user.profile_key) { (response) in
-            if response.status == "ok" {
+        APIService.shared.getIncome(from: week_start_timestamp, till: week_end_timestamp, provider_id: user.profile_key) { (response) in
+            if response.status == APIService.API_OK {
                 self.weekIncome = response.result!
-            }else{
+            }
+            else {
                 print(response.message!)
             }
         }
         
+        // Request Month income data
+        
         let month_start_timestamp = String(Int(Date().startOfMonth().timeIntervalSince1970))
         let month_end_timestamp = String(Int(Date().endOfMonth().timeIntervalSince1970))
         
-        APIService.getIncome(access_token: access_token, access_token_secret: access_token_secret, from: month_start_timestamp, till: month_end_timestamp, provider_id: user.profile_key) { (response) in
-            if response.status == "ok" {
+        APIService.shared.getIncome(from: month_start_timestamp, till: month_end_timestamp, provider_id: user.profile_key) { (response) in
+            if response.status == APIService.API_OK {
                 self.monthIncome = response.result!
-            }else{
+            }
+            else {
                 print(response.message!)
             }
         }
     }
     
+    // Update data considering toggle position
     func updateUI(){
         if valuesToggle.selectedSegmentIndex == 0 {
             todayLabel.text = todayIncome.getCharge()
             weekLabel.text = weekIncome.getCharge()
             monthLabel.text = monthIncome.getCharge()
-        }else{
+        }
+        else {
             todayLabel.text = todayIncome.getTime()
             weekLabel.text = weekIncome.getTime()
             monthLabel.text = monthIncome.getTime()
@@ -155,11 +170,18 @@ class DashboardController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let defaults = UserDefaults.standard
-        if let access_token = defaults.string(forKey: "oauth_access_token"),
-            let access_token_secret = defaults.string(forKey: "oauth_access_token_secret"){
-            self.getUserInfo(access_token: access_token, access_token_secret: access_token_secret)
-        }else{
+        let accessToken = DBHelper.shared.getString(forKey: DBHelper.UPWORK_ACCESS_TOKEN)
+        let accessTokenSecret = DBHelper.shared.getString(forKey: DBHelper.UPWORK_ACCESS_SECRET)
+        
+        // If oauth tokens not present, redirect to Menu
+        if accessToken != nil, accessTokenSecret != nil {
+            
+            // Setup network Service
+            APIService.shared.setTokens(accessToken: accessToken!, accessTokenSecret: accessTokenSecret!)
+            
+            self.getUserInfo()
+        }
+        else {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let menuController = storyBoard.instantiateViewController(withIdentifier: "menu") as! MenuController
             menuController.hidesBottomBarWhenPushed = true
@@ -167,22 +189,9 @@ class DashboardController: UIViewController {
         }
     }
     
-    
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
 }
 
+// Add extension to correctly handle date frames
 extension Date {
     
     func startOfMonth() -> Date {

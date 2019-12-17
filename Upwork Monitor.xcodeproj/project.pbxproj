@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		DB215F9923A04F6500F0AF28 /* JobTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB215F9823A04F6500F0AF28 /* JobTableViewCell.swift */; };
 		DB215F9B23A05E9200F0AF28 /* JobItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB215F9A23A05E9200F0AF28 /* JobItem.swift */; };
-		DB33D8D823A06AD500739E68 /* JobTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB215F9C23A060ED00F0AF28 /* JobTableViewController.swift */; };
+		DB310A2D23A969FA00F28CEA /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB310A2C23A969FA00F28CEA /* DBHelper.swift */; };
 		DB525C57231EC4BC004265FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB525C56231EC4BC004265FE /* AppDelegate.swift */; };
 		DB525C5C231EC4BC004265FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB525C5A231EC4BC004265FE /* Main.storyboard */; };
 		DB525C5E231EC4BE004265FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB525C5D231EC4BE004265FE /* Assets.xcassets */; };
@@ -81,7 +81,7 @@
 /* Begin PBXFileReference section */
 		DB215F9823A04F6500F0AF28 /* JobTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewCell.swift; sourceTree = "<group>"; };
 		DB215F9A23A05E9200F0AF28 /* JobItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobItem.swift; sourceTree = "<group>"; };
-		DB215F9C23A060ED00F0AF28 /* JobTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobTableViewController.swift; sourceTree = "<group>"; };
+		DB310A2C23A969FA00F28CEA /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		DB525C53231EC4BC004265FE /* Upwork Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Upwork Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB525C56231EC4BC004265FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB525C58231EC4BC004265FE /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
@@ -132,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB310A2A23A969A000F28CEA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DB310A2C23A969FA00F28CEA /* DBHelper.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		DB525C4A231EC4BC004265FE = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +164,7 @@
 		DB525C55231EC4BC004265FE /* Upwork Monitor */ = {
 			isa = PBXGroup;
 			children = (
+				DB310A2A23A969A000F28CEA /* Utils */,
 				DBA3F2D323283D9300A35753 /* Network */,
 				DB525C98231EC830004265FE /* SupportFiles */,
 				DB525C97231EC822004265FE /* Models */,
@@ -205,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				DB215F9823A04F6500F0AF28 /* JobTableViewCell.swift */,
-				DB215F9C23A060ED00F0AF28 /* JobTableViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -385,10 +393,10 @@
 				DBB676EF2325C66900B1E1B8 /* DashboardController.swift in Sources */,
 				DBA3F2D523283DD600A35753 /* APIService.swift in Sources */,
 				DB525C94231EC589004265FE /* MenuController.swift in Sources */,
-				DB33D8D823A06AD500739E68 /* JobTableViewController.swift in Sources */,
 				DBA1D3DE2339709800DE8AB8 /* CabinetController.swift in Sources */,
 				DB215F9923A04F6500F0AF28 /* JobTableViewCell.swift in Sources */,
 				DB525C57231EC4BC004265FE /* AppDelegate.swift in Sources */,
+				DB310A2D23A969FA00F28CEA /* DBHelper.swift in Sources */,
 				DBA3F2DF2328580E00A35753 /* Income.swift in Sources */,
 				DBA3F2DB232842A900A35753 /* User.swift in Sources */,
 				DBA3F2D92328422D00A35753 /* Auth.swift in Sources */,
