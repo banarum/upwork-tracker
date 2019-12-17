@@ -11,7 +11,7 @@ import UIKit
 class DashboardController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: RoundedImageView!
     @IBOutlet weak var todayLabel: UILabel!
     @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
@@ -45,13 +45,6 @@ class DashboardController: UIViewController {
         self.todayIncome = Income(charge: 0, time: 0)
         self.weekIncome = Income(charge: 0, time: 0)
         self.monthIncome = Income(charge: 0, time: 0)
-
-        // Make rounded profile picture
-        profileImageView.layer.borderWidth = 1
-        profileImageView.layer.masksToBounds = false
-        profileImageView.layer.borderColor = UIColor.black.cgColor
-        profileImageView.layer.cornerRadius = profileImageView.frame.height/2
-        profileImageView.clipsToBounds = true
         
         checkAssertions()
     }
@@ -81,7 +74,7 @@ class DashboardController: UIViewController {
     func getUserInfo() {
         APIService.shared.getUser(callback: {userResponse -> Void in
             if userResponse.status == APIService.API_OK {
-                self.setProfilePic(url: userResponse.result!.portrait_100_img)
+                self.profileImageView.LoadImageFromURL(url: userResponse.result!.portrait_100_img)
                 self.nameLabel.text = "\(userResponse.result!.first_name) \(userResponse.result!.last_name)"
                 self.emailLabel.text = userResponse.result!.email
                 self.getIncome(user: userResponse.result!)
@@ -90,19 +83,6 @@ class DashboardController: UIViewController {
                 print(userResponse.message!)
             }
         })
-    }
-    
-    // Download and setup profile image
-    func setProfilePic(url: String) {
-        let imageURL = URL(string: url)!
-        URLSession.shared.dataTask(with: imageURL) { (data, _, _) in
-            if let data = data {
-                let image = UIImage(data: data)
-                DispatchQueue.main.async {
-                    self.profileImageView.image = image
-                }
-            }
-        }.resume()
     }
     
     // Request summarized income data for day/week/month
@@ -195,28 +175,4 @@ class DashboardController: UIViewController {
         assert(valuesToggle != nil)
     }
     
-}
-
-// Add extension to correctly handle date frames
-extension Date {
-    
-    func startOfMonth() -> Date {
-        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
-    }
-    
-    func endOfMonth() -> Date {
-        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
-    }
-    
-    func startOfWeek() -> Date {
-        let gregorian = Calendar.current
-        let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))
-        return gregorian.date(byAdding: .day, value: 1, to: sunday!)!
-    }
-    
-    func endOfWeek() -> Date {
-        let gregorian = Calendar.current
-        let sunday = gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))
-        return gregorian.date(byAdding: .day, value: 7, to: sunday!)!
-    }
 }

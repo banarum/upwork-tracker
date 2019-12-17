@@ -34,6 +34,7 @@
 		DBB1B1CB23A98DB300BD79D9 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB1B1CA23A98DB300BD79D9 /* RoundedImageView.swift */; };
 		DBB676EF2325C66900B1E1B8 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB676EE2325C66900B1E1B8 /* DashboardController.swift */; };
 		DBECFDC823A06F72007A4D88 /* JobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBECFDC723A06F72007A4D88 /* JobsViewController.swift */; };
+		DBF2BD8F23A99B11009701F5 /* Date+DateFrames.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF2BD8E23A99B11009701F5 /* Date+DateFrames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		DBB676EE2325C66900B1E1B8 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		DBECFDC723A06F72007A4D88 /* JobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsViewController.swift; sourceTree = "<group>"; };
 		DBF2BD8A23A98F57009701F5 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = .swiftlint.yml; path = ../../../Downloads/.swiftlint.yml; sourceTree = "<group>"; };
+		DBF2BD8E23A99B11009701F5 /* Date+DateFrames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DateFrames.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,12 +135,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DB310A2A23A969A000F28CEA /* Utils */ = {
+		DB310A2A23A969A000F28CEA /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				DB310A2C23A969FA00F28CEA /* DBHelper.swift */,
+				DBF2BD8E23A99B11009701F5 /* Date+DateFrames.swift */,
 			);
-			path = Utils;
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		DB525C4A231EC4BC004265FE = {
@@ -166,7 +169,7 @@
 		DB525C55231EC4BC004265FE /* Upwork Monitor */ = {
 			isa = PBXGroup;
 			children = (
-				DB310A2A23A969A000F28CEA /* Utils */,
+				DB310A2A23A969A000F28CEA /* Helper */,
 				DBA3F2D323283D9300A35753 /* Network */,
 				DB525C98231EC830004265FE /* SupportFiles */,
 				DB525C97231EC822004265FE /* Models */,
@@ -224,8 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				DBA3F2D623283F0200A35753 /* Response.swift */,
-				DBA3F2D82328422D00A35753 /* Auth.swift */,
 				DBA3F2DA232842A900A35753 /* User.swift */,
+				DBA3F2D82328422D00A35753 /* Auth.swift */,
 				DBA3F2DE2328580E00A35753 /* Income.swift */,
 				DB215F9A23A05E9200F0AF28 /* JobItem.swift */,
 			);
@@ -428,6 +431,7 @@
 				DB215F9B23A05E9200F0AF28 /* JobItem.swift in Sources */,
 				DBECFDC823A06F72007A4D88 /* JobsViewController.swift in Sources */,
 				DB525C9A231EC946004265FE /* RegisterController.swift in Sources */,
+				DBF2BD8F23A99B11009701F5 /* Date+DateFrames.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

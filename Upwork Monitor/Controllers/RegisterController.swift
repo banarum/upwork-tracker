@@ -65,6 +65,8 @@ class RegisterController: UIViewController, WKUIDelegate {
                 })
             }
         }
+        
+        checkAssertions()
     }
     
     func generateRequestId() -> String {
@@ -106,6 +108,10 @@ class RegisterController: UIViewController, WKUIDelegate {
                 }
             }
         )
+    }
+    
+    func checkAssertions() {
+        assert(webView != nil)
     }
     
 }
