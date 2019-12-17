@@ -20,21 +20,21 @@ class DBHelper {
         return instance
     }()
     
-    private let defaults:UserDefaults
+    private let defaults: UserDefaults
     
     private init() {
         defaults = UserDefaults.standard
     }
     
-    public func saveString(_ value:String, forKey key:String) {
+    public func saveString(_ value: String, forKey key: String) {
         defaults.set(value, forKey: key)
     }
     
-    public func getString(forKey key:String) -> String? {
+    public func getString(forKey key: String) -> String? {
         return defaults.string(forKey: key)
     }
     
-    public func deleteString(forKey key:String) {
+    public func deleteString(forKey key: String) {
         defaults.removeObject(forKey: key)
     }
 }

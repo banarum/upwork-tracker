@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Income : Codable {
+struct Income: Codable {
     let charge: Float
     let time: Float
 }

@@ -33,6 +33,4 @@ class MenuController: UIViewController {
         }
     }
 
-
 }
-

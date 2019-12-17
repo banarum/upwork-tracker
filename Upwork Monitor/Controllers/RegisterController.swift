@@ -21,7 +21,7 @@ class RegisterController: UIViewController, WKUIDelegate {
         // generate unique request id
         requestId = self.generateRequestId()
         
-        let regURL = URL(string:"\(APIService.DOMAIN_URL + APIService.REG_ENDPOINT)?id=\(requestId)")
+        let regURL = URL(string: "\(APIService.DOMAIN_URL + APIService.REG_ENDPOINT)?id=\(requestId)")
         let request = URLRequest(url: regURL!)
         
         // Remove all cache
@@ -37,14 +37,42 @@ class RegisterController: UIViewController, WKUIDelegate {
         // Load webview with observer attached
         webView.load(request)
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+        
+        // When loading completed, check if 'verifier' String present. If so, proceed to getting client oauth tokens
+        _ = webView.observe(\.estimatedProgress, options: [.initial]) { (model, _) in
+            if Float(model.estimatedProgress) == 1 {
+                self.getWebViewContent(of: model, to: {content in
+                    
+                    // Get String after 'oauth_verifier='
+                    if let range = content.range(of: "oauth_verifier=") {
+                        let substring = content[range.upperBound..<content.endIndex]
+                        
+                        // Get String before ' '
+                        if let space_index = substring.firstIndex(of: " ") {
+                            
+                            // '...oauth_verifier=<target> '
+                            
+                            let oauth_verifier = String(substring[..<space_index])
+                            
+                            // Proceed with getting client oauth tokens
+                            self.onOauthReceived(verifier: oauth_verifier)
+                        } else {
+                            print("String not present")
+                        }
+                    } else {
+                        print("String not present")
+                    }
+                })
+            }
+        }
     }
     
     func generateRequestId() -> String {
         return "\(Int(Date().timeIntervalSince1970))\(Int.random(in: 100..<999))"
     }
     
-    func onOauthReceived(verifier:String) {
-        APIService.shared.getTokens(id: requestId, verifier: verifier, callback: { (response:Response<Auth>) in
+    func onOauthReceived(verifier: String) {
+        APIService.shared.getTokens(id: requestId, verifier: verifier, callback: { (response: Response<Auth>) in
             if response.status == APIService.API_OK {
                 
                 let accessToken = response.result!.oauth_access_token
@@ -61,53 +89,19 @@ class RegisterController: UIViewController, WKUIDelegate {
                 let dashboardController = storyBoard.instantiateViewController(withIdentifier: "dashboard") as! DashboardController
                 self.navigationController?.setViewControllers([dashboardController], animated: false)
                 
-            }
-            else {
+            } else {
                 print(response.message!)
             }
         })
     }
     
-    // When loading completed, check if 'verifier' String present. If so, proceed to getting client oauth tokens
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "estimatedProgress" {
-            if Float(webView.estimatedProgress) == 1 {
-                self.getWebViewContent(of: webView, to: {content in
-                    
-                    // Get String after 'oauth_verifier='
-                    if let range = content.range(of: "oauth_verifier=") {
-                        let substring = content[range.upperBound..<content.endIndex]
-                        
-                        // Get String before ' '
-                        if let space_index = substring.firstIndex(of: " ") {
-                            
-                            // '...oauth_verifier=<target> '
-                            
-                            let oauth_verifier = String(substring[..<space_index])
-                            
-                            // Proceed with getting client oauth tokens
-                            self.onOauthReceived(verifier: oauth_verifier)
-                        }
-                        else {
-                            print("String not present")
-                        }
-                    }
-                    else {
-                        print("String not present")
-                    }
-                })
-            }
-        }
-    }
-    
     // Perform JS query to receive WebView content
-    func getWebViewContent(of webView:WKWebView, to receiver: @escaping (String)->Void) {
+    func getWebViewContent(of webView: WKWebView, to receiver: @escaping (String) -> Void) {
         webView.evaluateJavaScript("document.documentElement.outerHTML.toString()",
-           completionHandler: { (html: Any?, error: Error?) in
-                if (html != nil){
+           completionHandler: { (html: Any?, _: Error?) in
+                if html != nil {
                     receiver(String(describing: html))
-                }
-                else {
+                } else {
                     receiver("")
                 }
             }

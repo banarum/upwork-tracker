@@ -24,13 +24,11 @@ class JobsViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // TODO: Load Jobs list from server
     }
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return jobs.count
     }
 
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "JobTableViewCell"
@@ -52,7 +50,7 @@ class JobsViewController: UIViewController, UITableViewDelegate, UITableViewData
         if job.isFixed {
             (cell.budgetRow.arrangedSubviews[0] as! UILabel).text = "Budget"
             (cell.budgetRow.arrangedSubviews[1] as! UILabel).text = "\(Int(job.budget))$"
-        }else{
+        } else {
             (cell.budgetRow.arrangedSubviews[0] as! UILabel).text = "Rate"
             (cell.budgetRow.arrangedSubviews[1] as! UILabel).text = "\(job.budget)$/h"
         }
@@ -60,7 +58,7 @@ class JobsViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // cell selected code here
     }
     

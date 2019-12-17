@@ -26,11 +26,13 @@ class DashboardController: UIViewController {
             updateUI()
         }
     }
+    
     var weekIncome = Income(charge: 0, time: 0) {
         didSet {
             updateUI()
         }
     }
+    
     var monthIncome = Income(charge: 0, time: 0) {
         didSet {
             updateUI()
@@ -50,14 +52,15 @@ class DashboardController: UIViewController {
         profileImageView.layer.borderColor = UIColor.black.cgColor
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
+        
+        checkAssertions()
     }
     
     @IBAction func onSignOut(_ sender: UIBarButtonItem) {
-        
         let alertController = UIAlertController(title: "Sing Out", message:
             "Are you sure?", preferredStyle: .alert)
         
-        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action -> Void in
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { _ -> Void in
             
             // Delete tokens from local storage
             DBHelper.shared.deleteString(forKey: DBHelper.UPWORK_ACCESS_TOKEN)
@@ -83,15 +86,14 @@ class DashboardController: UIViewController {
                 self.emailLabel.text = userResponse.result!.email
                 self.getIncome(user: userResponse.result!)
                 
-            }
-            else {
+            } else {
                 print(userResponse.message!)
             }
         })
     }
     
     // Download and setup profile image
-    func setProfilePic(url:String) {
+    func setProfilePic(url: String) {
         let imageURL = URL(string: url)!
         URLSession.shared.dataTask(with: imageURL) { (data, _, _) in
             if let data = data {
@@ -104,8 +106,7 @@ class DashboardController: UIViewController {
     }
     
     // Request summarized income data for day/week/month
-    func getIncome(user:User) {
-        
+    func getIncome(user: User) {
         self.todayIncome = Income(charge: 0, time: 0)
         self.weekIncome = Income(charge: 0, time: 0)
         self.monthIncome = Income(charge: 0, time: 0)
@@ -118,8 +119,7 @@ class DashboardController: UIViewController {
         APIService.shared.getIncome(from: today_start_timestamp, till: today_end_timestamp, provider_id: user.profile_key) { (response) in
             if response.status == APIService.API_OK {
                 self.todayIncome = response.result!
-            }
-            else {
+            } else {
                 print(response.message!)
             }
         }
@@ -132,8 +132,7 @@ class DashboardController: UIViewController {
         APIService.shared.getIncome(from: week_start_timestamp, till: week_end_timestamp, provider_id: user.profile_key) { (response) in
             if response.status == APIService.API_OK {
                 self.weekIncome = response.result!
-            }
-            else {
+            } else {
                 print(response.message!)
             }
         }
@@ -146,21 +145,19 @@ class DashboardController: UIViewController {
         APIService.shared.getIncome(from: month_start_timestamp, till: month_end_timestamp, provider_id: user.profile_key) { (response) in
             if response.status == APIService.API_OK {
                 self.monthIncome = response.result!
-            }
-            else {
+            } else {
                 print(response.message!)
             }
         }
     }
     
     // Update data considering toggle position
-    func updateUI(){
+    func updateUI() {
         if valuesToggle.selectedSegmentIndex == 0 {
             todayLabel.text = todayIncome.getCharge()
             weekLabel.text = weekIncome.getCharge()
             monthLabel.text = monthIncome.getCharge()
-        }
-        else {
+        } else {
             todayLabel.text = todayIncome.getTime()
             weekLabel.text = weekIncome.getTime()
             monthLabel.text = monthIncome.getTime()
@@ -180,13 +177,22 @@ class DashboardController: UIViewController {
             APIService.shared.setTokens(accessToken: accessToken!, accessTokenSecret: accessTokenSecret!)
             
             self.getUserInfo()
-        }
-        else {
+        } else {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let menuController = storyBoard.instantiateViewController(withIdentifier: "menu") as! MenuController
             menuController.hidesBottomBarWhenPushed = true
             self.navigationController?.setViewControllers([menuController], animated: false)
         }
+    }
+    
+    func checkAssertions() {
+        assert(nameLabel != nil)
+        assert(emailLabel != nil)
+        assert(profileImageView != nil)
+        assert(todayLabel != nil)
+        assert(weekLabel != nil)
+        assert(monthLabel != nil)
+        assert(valuesToggle != nil)
     }
     
 }

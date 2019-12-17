@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Auth : Codable{
-    var oauth_access_token:String
-    var oauth_access_token_secret:String
+struct Auth: Codable {
+    var oauth_access_token: String
+    var oauth_access_token_secret: String
 }

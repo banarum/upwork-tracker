@@ -1,0 +1,16 @@
+disabled_rules: # rule identifiers to exclude from running
+  - trailing_whitespace
+  - force_try
+  - force_cast
+  - line_length
+  - identifier_name
+  - cyclomatic_complexity
+  - type_body_length
+  - function_body_length
+  - implicit_getter
+  - file_length
+  - function_parameter_count
+opt_in_rules:
+included: # paths to include during linting. `--path` is ignored if present.
+  - Upwork Monitor
+excluded:

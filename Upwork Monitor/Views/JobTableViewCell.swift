@@ -16,7 +16,6 @@ class JobTableViewCell: UITableViewCell {
     @IBOutlet weak var paidRow: UIStackView!
     @IBOutlet weak var budgetRow: UIStackView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

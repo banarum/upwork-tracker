@@ -26,12 +26,12 @@
 		DB525C94231EC589004265FE /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB525C58231EC4BC004265FE /* MenuController.swift */; };
 		DB525C9A231EC946004265FE /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB525C99231EC946004265FE /* RegisterController.swift */; };
 		DB525C9E231ECAC3004265FE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB525C9D231ECAC3004265FE /* WebKit.framework */; };
-		DBA1D3DE2339709800DE8AB8 /* CabinetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA1D3DD2339709800DE8AB8 /* CabinetController.swift */; };
 		DBA3F2D523283DD600A35753 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA3F2D423283DD600A35753 /* APIService.swift */; };
 		DBA3F2D723283F0200A35753 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA3F2D623283F0200A35753 /* Response.swift */; };
 		DBA3F2D92328422D00A35753 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA3F2D82328422D00A35753 /* Auth.swift */; };
 		DBA3F2DB232842A900A35753 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA3F2DA232842A900A35753 /* User.swift */; };
 		DBA3F2DF2328580E00A35753 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA3F2DE2328580E00A35753 /* Income.swift */; };
+		DBB1B1CB23A98DB300BD79D9 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB1B1CA23A98DB300BD79D9 /* RoundedImageView.swift */; };
 		DBB676EF2325C66900B1E1B8 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB676EE2325C66900B1E1B8 /* DashboardController.swift */; };
 		DBECFDC823A06F72007A4D88 /* JobsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBECFDC723A06F72007A4D88 /* JobsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -103,14 +103,15 @@
 		DB525C84231EC4BF004265FE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		DB525C99231EC946004265FE /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		DB525C9D231ECAC3004265FE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		DBA1D3DD2339709800DE8AB8 /* CabinetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CabinetController.swift; sourceTree = "<group>"; };
 		DBA3F2D423283DD600A35753 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		DBA3F2D623283F0200A35753 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		DBA3F2D82328422D00A35753 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		DBA3F2DA232842A900A35753 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DBA3F2DE2328580E00A35753 /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
+		DBB1B1CA23A98DB300BD79D9 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		DBB676EE2325C66900B1E1B8 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
 		DBECFDC723A06F72007A4D88 /* JobsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsViewController.swift; sourceTree = "<group>"; };
+		DBF2BD8A23A98F57009701F5 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = .swiftlint.yml; path = ../../../Downloads/.swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +144,7 @@
 		DB525C4A231EC4BC004265FE = {
 			isa = PBXGroup;
 			children = (
+				DBF2BD8A23A98F57009701F5 /* .swiftlint.yml */,
 				DB525C55231EC4BC004265FE /* Upwork Monitor */,
 				DB525C69231EC4BE004265FE /* Upwork Monitor WatchKit App */,
 				DB525C78231EC4BF004265FE /* Upwork Monitor WatchKit Extension */,
@@ -204,7 +206,6 @@
 				DB525C58231EC4BC004265FE /* MenuController.swift */,
 				DB525C99231EC946004265FE /* RegisterController.swift */,
 				DBB676EE2325C66900B1E1B8 /* DashboardController.swift */,
-				DBA1D3DD2339709800DE8AB8 /* CabinetController.swift */,
 				DBECFDC723A06F72007A4D88 /* JobsViewController.swift */,
 			);
 			path = Controllers;
@@ -214,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				DB215F9823A04F6500F0AF28 /* JobTableViewCell.swift */,
+				DBB1B1CA23A98DB300BD79D9 /* RoundedImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,6 +271,7 @@
 				DB525C50231EC4BC004265FE /* Frameworks */,
 				DB525C51231EC4BC004265FE /* Resources */,
 				DB525C8E231EC4BF004265FE /* Embed Watch Content */,
+				DBF2BD8C23A98FDF009701F5 /* Lint Script */,
 			);
 			buildRules = (
 			);
@@ -385,6 +388,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DBF2BD8C23A98FDF009701F5 /* Lint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Lint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"Warning: swiftlint not installed. See installation instructions at https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DB525C4F231EC4BC004265FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -393,7 +417,6 @@
 				DBB676EF2325C66900B1E1B8 /* DashboardController.swift in Sources */,
 				DBA3F2D523283DD600A35753 /* APIService.swift in Sources */,
 				DB525C94231EC589004265FE /* MenuController.swift in Sources */,
-				DBA1D3DE2339709800DE8AB8 /* CabinetController.swift in Sources */,
 				DB215F9923A04F6500F0AF28 /* JobTableViewCell.swift in Sources */,
 				DB525C57231EC4BC004265FE /* AppDelegate.swift in Sources */,
 				DB310A2D23A969FA00F28CEA /* DBHelper.swift in Sources */,
@@ -401,6 +424,7 @@
 				DBA3F2DB232842A900A35753 /* User.swift in Sources */,
 				DBA3F2D92328422D00A35753 /* Auth.swift in Sources */,
 				DBA3F2D723283F0200A35753 /* Response.swift in Sources */,
+				DBB1B1CB23A98DB300BD79D9 /* RoundedImageView.swift in Sources */,
 				DB215F9B23A05E9200F0AF28 /* JobItem.swift in Sources */,
 				DBECFDC823A06F72007A4D88 /* JobsViewController.swift in Sources */,
 				DB525C9A231EC946004265FE /* RegisterController.swift in Sources */,

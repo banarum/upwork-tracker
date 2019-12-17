@@ -30,7 +30,6 @@ class APIService {
     private let ACCESS_TOKEN_FIELD          = "oauth_access_token"
     private let ACCESS_TOKEN_SECRET_FIELD   = "oauth_access_token_secret"
     
-    
     private var accessToken = ""
     private var accessTokenSecret = ""
     
@@ -38,7 +37,7 @@ class APIService {
     
     // Post initialization //////////
     
-    public func getIncome(from start_date:String, till end_date:String, provider_id:String, callback: @escaping (Response<Income>) -> Void) {
+    public func getIncome(from start_date: String, till end_date: String, provider_id: String, callback: @escaping (Response<Income>) -> Void) {
         let postData = getPostData(args: [
             ACCESS_TOKEN_FIELD: accessToken,
             ACCESS_TOKEN_SECRET_FIELD: accessTokenSecret,
@@ -59,18 +58,16 @@ class APIService {
         makeRequest(postData: postData, url: "\(APIService.DOMAIN_URL + APIService.ME_ENDPOINT)", callback: callback)
     }
     
-    
     // Pre initialization //////////
     
-    public func getTokens(id:String, verifier:String, callback: @escaping (Response<Auth>) -> Void) {
+    public func getTokens(id: String, verifier: String, callback: @escaping (Response<Auth>) -> Void) {
         let postData = getPostData(args: [
-            "id":id,
-            "verifier":verifier
+            "id": id,
+            "verifier": verifier
         ])
         
         makeRequest(postData: postData, url: "\(APIService.DOMAIN_URL + APIService.OAUTH_ENDPOINT)", callback: callback)
     }
-    
     
     // Core ///////
     
@@ -80,20 +77,20 @@ class APIService {
         self.accessTokenSecret = accessTokenSecret
     }
     
-    private func getPostData(args:[String:String]) -> NSMutableData {
+    private func getPostData(args: [String: String]) -> NSMutableData {
         var result = ""
         for key in args.keys {
             let value = args[key]!
             if result != ""{
                 result = "\(result)&\(key)=\(value)"
-            }else{
+            } else {
                 result = "\(key)=\(value)"
             }
         }
         return NSMutableData(data: result.data(using: String.Encoding.utf8)!)
     }
     
-    private func makeRequest<T>(postData:NSMutableData, url:String, callback: @escaping (Response<T>) -> Void) {
+    private func makeRequest<T>(postData: NSMutableData, url: String, callback: @escaping (Response<T>) -> Void) {
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
         request.httpBody = postData as Data
@@ -106,7 +103,7 @@ class APIService {
                     do {
                         let decoder = JSONDecoder()
                         //print(String(decoding: data!, as: UTF8.self))
-                        let userResponse:Response<T> = try decoder.decode(Response<T>.self, from: data!)
+                        let userResponse: Response<T> = try decoder.decode(Response<T>.self, from: data!)
                         DispatchQueue.main.async {
                             callback(userResponse)
                         }
@@ -129,7 +126,6 @@ class APIService {
         
         task.resume()
     }
-    
     
 }
 

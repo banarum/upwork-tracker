@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Response<T : Codable> : Codable {
+struct Response<T: Codable>: Codable {
     let result: T?
     let status: String
     let message: String?
