@@ -15,6 +15,8 @@ class RegisterController: UIViewController, WKUIDelegate {
     
     var requestId = "0"
     
+    var observation: NSKeyValueObservation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,12 +38,11 @@ class RegisterController: UIViewController, WKUIDelegate {
         
         // Load webview with observer attached
         webView.load(request)
-        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         
         // When loading completed, check if 'verifier' String present. If so, proceed to getting client oauth tokens
-        _ = webView.observe(\.estimatedProgress, options: [.initial]) { (model, _) in
-            if Float(model.estimatedProgress) == 1 {
-                self.getWebViewContent(of: model, to: {content in
+        observation = webView.observe(\WKWebView.estimatedProgress, options: [.new]) { (webView, _) in
+            if Float(webView.estimatedProgress) == 1 {
+                self.getWebViewContent(of: webView, to: {content in
                     
                     // Get String after 'oauth_verifier='
                     if let range = content.range(of: "oauth_verifier=") {
@@ -112,6 +113,10 @@ class RegisterController: UIViewController, WKUIDelegate {
     
     func checkAssertions() {
         assert(webView != nil)
+    }
+    
+    deinit {
+        self.observation = nil
     }
     
 }
