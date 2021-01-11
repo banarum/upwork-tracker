@@ -43,8 +43,8 @@ class JobsViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.jobTitle.text = job.title
         cell.clientName.text = job.clientName
+    
         
-        (cell.claimedRow.arrangedSubviews[1] as! UILabel).text = "\(Int(job.claimed))$"
         (cell.paidRow.arrangedSubviews[1] as! UILabel).text = "\(Int(job.paid))$"
         
         if job.isFixed {
@@ -94,6 +94,8 @@ class JobsViewController: UIViewController, UITableViewDelegate, UITableViewData
         )
         
         self.jobs += [job1, job2, job3]
+        
+        //var kek: 
         
     }
 

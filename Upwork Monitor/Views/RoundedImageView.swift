@@ -20,7 +20,7 @@ class RoundedImageView: UIImageView {
         self.clipsToBounds = true
     }
     
-    public func LoadImageFromURL(url: String) {
+    public func loadImageFromURL(url: String) {
         let imageURL = URL(string: url)!
         URLSession.shared.dataTask(with: imageURL) { (data, _, _) in
             if let data = data {

@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.banarum.Upwork-Monitor</string>
+	<string>com.banarum.upworkapp</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

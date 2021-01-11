@@ -12,7 +12,6 @@ class JobTableViewCell: UITableViewCell {
 
     @IBOutlet weak var clientName: UILabel!
     @IBOutlet weak var jobTitle: UILabel!
-    @IBOutlet weak var claimedRow: UIStackView!
     @IBOutlet weak var paidRow: UIStackView!
     @IBOutlet weak var budgetRow: UIStackView!
     

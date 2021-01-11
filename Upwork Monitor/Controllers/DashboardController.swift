@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WatchConnectivity
 
 class DashboardController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
@@ -16,6 +17,8 @@ class DashboardController: UIViewController {
     @IBOutlet weak var weekLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var valuesToggle: UISegmentedControl!
+    
+    var session : WCSession!
     
     @IBAction func onToggle(_ sender: UISegmentedControl) {
         updateUI()
@@ -41,6 +44,12 @@ class DashboardController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if WCSession.isSupported() {
+            self.session = WCSession.default
+            self.session.delegate = self
+            self.session.activate()
+        }
         
         self.todayIncome = Income(charge: 0, time: 0)
         self.weekIncome = Income(charge: 0, time: 0)
@@ -74,7 +83,7 @@ class DashboardController: UIViewController {
     func getUserInfo() {
         APIService.shared.getUser(callback: {userResponse -> Void in
             if userResponse.status == APIService.API_OK {
-                self.profileImageView.LoadImageFromURL(url: userResponse.result!.portrait_100_img)
+                self.profileImageView.loadImageFromURL(url: userResponse.result!.portrait_100_img)
                 self.nameLabel.text = "\(userResponse.result!.first_name) \(userResponse.result!.last_name)"
                 self.emailLabel.text = userResponse.result!.email
                 self.getIncome(user: userResponse.result!)
@@ -133,6 +142,7 @@ class DashboardController: UIViewController {
     
     // Update data considering toggle position
     func updateUI() {
+        
         if valuesToggle.selectedSegmentIndex == 0 {
             todayLabel.text = todayIncome.getCharge()
             weekLabel.text = weekIncome.getCharge()
@@ -152,6 +162,11 @@ class DashboardController: UIViewController {
         
         // If oauth tokens not present, redirect to Menu
         if accessToken != nil, accessTokenSecret != nil {
+            
+            if let validSession = self.session, validSession.isReachable {//5.1
+                let data: [String: String] = ["accessToken": accessToken!, "accessTokenSecret": accessTokenSecret!] // Create your Dictionay as per uses
+                  validSession.sendMessage(data, replyHandler: nil, errorHandler: nil)
+                }
             
             // Setup network Service
             APIService.shared.setTokens(accessToken: accessToken!, accessTokenSecret: accessTokenSecret!)
@@ -175,4 +190,23 @@ class DashboardController: UIViewController {
         assert(valuesToggle != nil)
     }
     
+}
+
+extension DashboardController: WCSessionDelegate {
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("IPHONE activationState")
+    }
+
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        print("IPHONE BecomeInactive")
+    }
+
+    func sessionDidDeactivate(_ session: WCSession) {
+        print("IPHONE DidDeactivate")
+    }
+    
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+         print("IPHONE didReceiveApplicationContext")
+    }
 }

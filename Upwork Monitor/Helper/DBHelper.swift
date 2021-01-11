@@ -23,11 +23,12 @@ class DBHelper {
     private let defaults: UserDefaults
     
     private init() {
-        defaults = UserDefaults.standard
+        defaults = UserDefaults()
     }
     
     public func saveString(_ value: String, forKey key: String) {
         defaults.set(value, forKey: key)
+        defaults.synchronize()
     }
     
     public func getString(forKey key: String) -> String? {

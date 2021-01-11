@@ -29,7 +29,7 @@ extension Income {
         return "\(hours):\(minutes)"
     }
     
-    func getCharge() -> String {
-        return "\(Int(self.charge.rounded()))$"
+    func getCharge(showNumberOnly: Bool = false) -> String {
+        return showNumberOnly ? "\(Int(self.charge.rounded()))" : "$\(Int(self.charge.rounded()))"
     }
 }

@@ -129,39 +129,19 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8Hp-Or-CUe">
-                                                    <rect key="frame" x="258" y="76.5" width="136" height="43.5"/>
+                                                    <rect key="frame" x="261.5" y="99.5" width="132.5" height="20.5"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eum-pQ-jjM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="136" height="18"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Claimed" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeK-7I-YdK">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="56" height="18"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <color key="textColor" red="0.63137254901960782" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyA-fw-Snl">
-                                                                    <rect key="frame" x="66" y="0.0" width="70" height="18"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="width" constant="70" id="LmP-Af-daY"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <color key="textColor" red="0.63137254901960782" green="0.41960784313725491" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                        </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="A15-V7-Vkc">
-                                                            <rect key="frame" x="0.0" y="23" width="136" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="132.5" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Paid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3E-cb-R1G">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="33" height="20.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="29.5" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <color key="textColor" red="0.20392156862745098" green="0.58823529411764708" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqN-4f-wdv">
-                                                                    <rect key="frame" x="66" y="0.0" width="70" height="20.5"/>
+                                                                    <rect key="frame" x="62.5" y="0.0" width="70" height="20.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="70" id="5OV-CG-fh3"/>
                                                                     </constraints>
@@ -191,7 +171,6 @@
                                         </accessibility>
                                         <connections>
                                             <outlet property="budgetRow" destination="Ilp-Wd-Wuw" id="lJm-JH-dbf"/>
-                                            <outlet property="claimedRow" destination="eum-pQ-jjM" id="5gk-ee-Jc3"/>
                                             <outlet property="clientName" destination="XN8-fu-Isy" id="jOg-SJ-Esh"/>
                                             <outlet property="jobTitle" destination="OpV-Lu-1Mf" id="BJx-MK-xjM"/>
                                             <outlet property="paidRow" destination="A15-V7-Vkc" id="S0X-4Z-lYv"/>
@@ -211,20 +190,7 @@
                         <viewLayoutGuide key="safeArea" id="Y8A-B7-Cts"/>
                     </view>
                     <navigationItem key="navigationItem" id="U65-ss-fCk">
-                        <rightBarButtonItems>
-                            <barButtonItem style="plain" systemItem="add" id="OFj-xL-AtN"/>
-                            <barButtonItem style="plain" id="UCz-nH-L79">
-                                <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="DYU-Pf-28C">
-                                    <rect key="frame" x="177.5" y="5.5" width="176" height="33"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <segments>
-                                        <segment title="Day"/>
-                                        <segment title="Week"/>
-                                        <segment title="Month"/>
-                                    </segments>
-                                </segmentedControl>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="OFj-xL-AtN"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="uy8-f2-fh8" id="K5q-y1-XqM"/>

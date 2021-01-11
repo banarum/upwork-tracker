@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14256" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17701" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14243"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14219"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--TimeMenu-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="TimeMenu" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Upwork_Monitor_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <button width="1" alignment="center" verticalAlignment="center" title="Today" id="475-g4-NcA">
+                            <connections>
+                                <segue destination="lDZ-ov-4hY" kind="push" identifier="today_segue" id="e1k-WY-Ars"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="center" verticalAlignment="center" title="Week" id="6Mw-p8-d55">
+                            <connections>
+                                <segue destination="lDZ-ov-4hY" kind="push" identifier="week_segue" id="EFD-PF-jcu"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="center" verticalAlignment="center" title="Month" id="gkE-Fu-gbD">
+                            <connections>
+                                <segue destination="lDZ-ov-4hY" kind="push" identifier="month_segue" id="wiY-D0-Zm6"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="-162" y="301"/>
+        </scene>
+        <!--JobDescription-->
+        <scene sceneID="6uV-d3-6nz">
+            <objects>
+                <controller identifier="JobDescription" id="lDZ-ov-4hY" customClass="JobInterfaceController" customModule="Upwork_Monitor_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" id="oJb-pW-ATh"/>
+                        <label alignment="center" text="Work Summary" id="eiq-Nd-0QA"/>
+                        <label alignment="center" verticalAlignment="center" text="$ --" textAlignment="center" id="BR3-1D-mBb">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </label>
+                        <label alignment="center" verticalAlignment="center" text="--:--" id="1Tj-a7-gZx"/>
+                    </items>
+                    <connections>
+                        <outlet property="priceLabel" destination="BR3-1D-mBb" id="TvR-eR-WbG"/>
+                        <outlet property="timeLabel" destination="1Tj-a7-gZx" id="K3G-Dp-h4d"/>
+                        <outlet property="workTitle" destination="eiq-Nd-0QA" id="MrR-pM-BBl"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="143" y="278"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -32,16 +73,19 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Upwork_Monitor_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Upwork_Monitor_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="345"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wiY-D0-Zm6"/>
+    </inferredMetricsTieBreakers>
 </document>
